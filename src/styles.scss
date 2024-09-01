@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  color: var(--white-colour);
+  background: var(--background-colour);
+  font-family: Arial, sans-serif;
+}
+
+:root {
+  --red-colour: #FC4747;
+  --pure-white: #979797;
+  --white-colour: #FFFFFF;
+  --dark-blue-colour: #161D2F;
+  --background-colour: #10141E;
+  --lithe-blue-colour: #5A698F;
+}
+

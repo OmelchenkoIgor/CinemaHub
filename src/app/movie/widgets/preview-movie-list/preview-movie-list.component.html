@@ -1,0 +1,7 @@
+@if (previewMoviesList()) {
+  <div class="movie-list">
+    @for (movie of previewMoviesList(); track $index) {
+      <app-preview-card [content]="movie" />
+    }
+  </div>
+}

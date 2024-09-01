@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    padding: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 24px;
+    gap: 30px;
+
+    .content {
+      padding: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    padding: 32px;
+    flex-direction: row;
+
+    .content {
+      width: 100%;
+    }
+  }
+}
