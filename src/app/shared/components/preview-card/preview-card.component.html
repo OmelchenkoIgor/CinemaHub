@@ -1,10 +1,15 @@
 <div class="card">
   <div class="card-preview">
-    <img class="preview" [src]="content().poster" [alt]="content().title">
+    <img
+      [src]="content().poster"
+      [alt]="content().title"
+      class="preview"
+      loading="lazy"
+    >
     <div class="bookmark-icon">
       <img src="/icons/bookmark.svg" alt="Bookmark">
     </div>
-    <div class="play-icon">
+    <div class="play-icon" [routerLink]="['/', content().type + 's', content().id]">
       <img src="/icons/play.svg" alt="Play">
       <span>Play</span>
     </div>
@@ -13,7 +18,7 @@
     <div class="card-meta">
       <span>{{ content().release_date }}</span>
       <span>•</span>
-      <img src="/icons/{{content().type}}.svg">
+      <img src="/icons/{{content().type}}.svg" alt="{{ content().type | titlecase}}">
       <span>{{ content().type | titlecase }}</span>
       <span>•</span>
       <span>PG</span>

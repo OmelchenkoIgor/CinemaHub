@@ -1,4 +1,5 @@
-import {Component, computed, inject, OnInit, Signal} from '@angular/core';
+import {Component, computed, HostListener, inject, OnInit, Signal} from '@angular/core';
+import {GetNextMoviesPageCommand} from '@movie/commands/get-next-movies-page-command';
 import {previewMovie, PreviewMovieRepository} from '@movie/data';
 import {PreviewCardComponent} from '@shared/components';
 import {GetMoviesCommand} from '@movie/commands';
@@ -12,10 +13,21 @@ import {GetMoviesCommand} from '@movie/commands';
 })
 export class PreviewMovieListComponent implements OnInit {
   private readonly getMoviesCommand: GetMoviesCommand = inject(GetMoviesCommand);
+  private readonly getNextMoviesPageCommand: GetNextMoviesPageCommand = inject(GetNextMoviesPageCommand);
+
   protected readonly previewMovieRepository: PreviewMovieRepository = inject(PreviewMovieRepository);
   protected readonly previewMoviesList: Signal<Array<previewMovie>> = computed(() => this.previewMovieRepository.getPreviewMovies());
 
   ngOnInit(): void {
     this.getMoviesCommand.execute();
+    this.getNextMoviesPageCommand.resetPage();
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const bottomOfWindow: boolean = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+    if (bottomOfWindow) {
+      this.getNextMoviesPageCommand.execute();
+    }
   }
 }

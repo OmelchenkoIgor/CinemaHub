@@ -12,4 +12,8 @@ export class PreviewMovieRepository {
   public savePreviewMovies(movies: Array<previewMovie>): void {
     this.previewMovieList.set(movies);
   }
+
+  public addPreviewMovies(movies: Array<previewMovie>): void {
+    this.previewMovieList.set([...this.previewMovieList(), ...movies]);
+  }
 }
