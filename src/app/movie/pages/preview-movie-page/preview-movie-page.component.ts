@@ -1,4 +1,4 @@
-import {PreviewMovieListComponent} from '@movie/widgets';
+import {PreviewMovieListComponent, SearchMovieComponent} from '@movie/widgets';
 import {Component, inject, OnInit} from '@angular/core';
 import {Title, Meta} from '@angular/platform-browser';
 
@@ -7,7 +7,7 @@ import {Title, Meta} from '@angular/platform-browser';
   selector: 'app-preview-movie-page',
   templateUrl: './preview-movie-page.component.html',
   styleUrl: './preview-movie-page.component.scss',
-  imports: [PreviewMovieListComponent]
+  imports: [PreviewMovieListComponent, SearchMovieComponent]
 })
 export default class PreviewMoviePageComponent implements OnInit {
   private readonly metaService: Meta = inject(Meta);

@@ -1,8 +1,8 @@
-import {Component, computed, effect, HostListener, inject, OnDestroy, OnInit, Signal} from '@angular/core';
-import {GetNextMoviesPageCommand} from '@movie/commands/get-next-movies-page-command';
+import {Component, computed, effect, HostListener, inject, OnDestroy, Signal} from '@angular/core';
+import {PageMovieRepository, previewMovie, PreviewMovieRepository} from '@movie/data';
 import {LoadingSpinnerComponent, PreviewCardComponent} from '@shared/components';
-import {previewMovie, PreviewMovieRepository} from '@movie/data';
-import {GetMoviesCommand} from '@movie/commands';
+import {GetNextMoviesPageCommand} from '@movie/commands';
+import {SearchMovieRepository} from '@movie/data';
 
 @Component({
   standalone: true,
@@ -11,10 +11,11 @@ import {GetMoviesCommand} from '@movie/commands';
   styleUrl: './preview-movie-list.component.scss',
   imports: [PreviewCardComponent, LoadingSpinnerComponent]
 })
-export class PreviewMovieListComponent implements OnInit, OnDestroy {
-  private readonly getMoviesCommand: GetMoviesCommand = inject(GetMoviesCommand);
+export class PreviewMovieListComponent implements OnDestroy {
   private readonly getNextMoviesPageCommand: GetNextMoviesPageCommand = inject(GetNextMoviesPageCommand);
 
+  private readonly pageMovieRepository: PageMovieRepository = inject(PageMovieRepository);
+  private readonly searchMovieRepository: SearchMovieRepository = inject(SearchMovieRepository);
   protected readonly previewMovieRepository: PreviewMovieRepository = inject(PreviewMovieRepository);
   protected readonly previewMoviesList: Signal<Array<previewMovie>> = computed(() => this.previewMovieRepository.getPreviewMovies());
 
@@ -28,12 +29,8 @@ export class PreviewMovieListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
-    this.getMoviesCommand.execute();
-  }
-
   ngOnDestroy(): void {
-    this.getNextMoviesPageCommand.resetPage();
+    this.pageMovieRepository.saveNewPage(2);
   }
 
   @HostListener('window:scroll', [])
@@ -41,7 +38,7 @@ export class PreviewMovieListComponent implements OnInit, OnDestroy {
     const scrollPosition: number = window.scrollY + window.innerHeight;
     const threshold: number = document.body.offsetHeight * 0.9;
 
-    if (scrollPosition >= threshold && !this.isLoading) {
+    if (scrollPosition >= threshold && !this.isLoading && !this.searchMovieRepository.getSearchMovie()) {
       this.isLoading = true;
       this.getNextMoviesPageCommand.execute();
     }
