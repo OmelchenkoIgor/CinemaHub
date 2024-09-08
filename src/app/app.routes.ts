@@ -9,5 +9,9 @@ export const routes: Routes = [
   {
     path: 'movies',
     loadChildren: () => import('./movie').then(m => m.route)
+  },
+  {
+    path: 'series',
+    loadChildren: () => import('./serial').then(m => m.route)
   }
 ];

@@ -1,6 +1,7 @@
 import {Component, input, InputSignal} from '@angular/core';
 import {TitleCasePipe} from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {previewSerial} from '@serial/data';
 import {previewMovie} from '@movie/data';
 
 @Component({
@@ -11,5 +12,5 @@ import {previewMovie} from '@movie/data';
   imports: [TitleCasePipe, RouterLink]
 })
 export class PreviewCardComponent {
-  public content: InputSignal<previewMovie> = input.required();
+  public content: InputSignal<previewMovie | previewSerial> = input.required();
 }

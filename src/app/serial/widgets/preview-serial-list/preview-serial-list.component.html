@@ -1,0 +1,11 @@
+@if (previewSerialList()) {
+  <div class="serial-list">
+    @for (serial of previewSerialList(); track $index) {
+      <app-preview-card [content]="serial"/>
+    }
+  </div>
+
+  @if (isLoading) {
+    <app-loading-spinner [text]="'tv'"/>
+  }
+}

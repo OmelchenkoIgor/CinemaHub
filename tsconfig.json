@@ -3,6 +3,7 @@
   "compilerOptions": {
     "paths": {
       "@movie/*": ["app/movie/*"],
+      "@serial/*": ["app/serial/*"],
       "@pages/*": ["app/pages/*"],
       "@shared/*": ["app/shared/*"]
     },
