@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-preview">
     <img
-      [src]="content().poster"
+      [src]="isValidPoster(content().poster) ? content().poster : '/images/placeholder.webp'"
       [alt]="content().title"
       class="preview"
       loading="lazy"

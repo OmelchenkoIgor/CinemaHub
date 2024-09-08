@@ -13,4 +13,8 @@ import {previewMovie} from '@movie/data';
 })
 export class PreviewCardComponent {
   public content: InputSignal<previewMovie | previewSerial> = input.required();
+
+  public isValidPoster(posterUrl: string | null): boolean {
+    return !!(posterUrl && posterUrl !== 'https://image.tmdb.org/t/p/w500null');
+  }
 }
