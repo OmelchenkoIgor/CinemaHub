@@ -1,0 +1,6 @@
+@if (category()) {
+  <app-search-input
+    [type]=category()
+    (searchQueryChange)="searchChange.set($event)"
+  />
+}

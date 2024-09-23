@@ -1,0 +1,11 @@
+@if (previewList()) {
+  <div class="list">
+    @for (movie of previewList(); track $index) {
+      <app-preview-card [content]="movie"/>
+    }
+  </div>
+
+  @if (isLoading) {
+    <app-loading-spinner [text]="category()"/>
+  }
+}

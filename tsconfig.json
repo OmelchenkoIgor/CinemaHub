@@ -2,10 +2,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@movie/*": ["app/movie/*"],
-      "@serial/*": ["app/serial/*"],
       "@pages/*": ["app/pages/*"],
-      "@shared/*": ["app/shared/*"]
+      "@shared/*": ["app/shared/*"],
+      "@widgets/*": ["app/widgets/*"],
+      "@content/*": ["app/content/*"],
+      "@environments/*": ["environments/*"]
     },
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
