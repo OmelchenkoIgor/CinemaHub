@@ -1,5 +1,5 @@
-import {environment} from '@environments/environment';
 import {Category, Language, responseCinemaDTO, Type} from '@content/cinema';
+import {environment} from '@environments/environment';
 import {responseSerialDTO} from '@content/serial';
 import {inject, Injectable} from '@angular/core';
 import {responseMovieDTO} from '@content/movie';
@@ -23,7 +23,7 @@ export class ApiService {
       params['query'] = query;
     }
 
-    return this.http.get<responseCinemaDTO | responseMovieDTO | responseSerialDTO>(`${environment.BASE_URL}/${type}/${categoryWithTimeframe}`, { params });
+    return this.http.get<responseCinemaDTO | responseMovieDTO | responseSerialDTO>(`${environment.BASE_URL}/${type}/${categoryWithTimeframe}`, {params});
   }
 
   public getSearch(type: Type, category: Category, page: number, language: Language, query: string): Observable<responseCinemaDTO | responseMovieDTO | responseSerialDTO> {
@@ -34,6 +34,6 @@ export class ApiService {
       page: page.toString()
     };
 
-    return this.http.get<responseCinemaDTO | responseMovieDTO | responseSerialDTO>(`${environment.BASE_URL}/${type}/${category}`, { params });
+    return this.http.get<responseCinemaDTO | responseMovieDTO | responseSerialDTO>(`${environment.BASE_URL}/${type}/${category}`, {params});
   }
 }

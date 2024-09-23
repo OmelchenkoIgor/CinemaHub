@@ -11,6 +11,10 @@ export class PreviewCinemaRepository {
     this.page.set(newPage);
   }
 
+  public saveSearchQuery(query: string): void {
+    this.searchQuery.set(query);
+  }
+
   public savePreviewCinema(content: Array<previewCinema>): void {
     this.previewCinemaList.set(content);
     console.log(this.isPreviewCinemaList());
@@ -18,10 +22,6 @@ export class PreviewCinemaRepository {
 
   public addPreviewCinema(content: Array<previewCinema>): void {
     this.previewCinemaList.set([...this.previewCinemaList(), ...content]);
-  }
-
-  public saveSearchQuery(query: string): void {
-    this.searchQuery.set(query);
   }
 
   public readonly isPage: Signal<number> = this.page.asReadonly();

@@ -1,9 +1,9 @@
 type previewCinemaProps = {
-  id: number,
-  type: string,
-  title: string,
-  poster: string,
-  release: string,
+  id: number;
+  type: string;
+  title: string;
+  poster: string;
+  release: string;
 }
 
 export class previewCinema {
