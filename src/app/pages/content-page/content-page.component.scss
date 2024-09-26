@@ -1,3 +1,14 @@
+.trending-block {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 0 24px;
+
+  .title {
+    margin: 0 0 16px 0;
+  }
+}
+
 .title {
   margin: 0 0 24px 0;
   font-size: 24px;
@@ -5,6 +16,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .trending-block {
+    padding: 0 0 40px;
+  }
+
   .title {
     margin: 0 0 24px 0;
     font-size: 40px;

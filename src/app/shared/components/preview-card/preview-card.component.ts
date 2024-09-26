@@ -1,6 +1,6 @@
 import {Component, input, InputSignal} from '@angular/core';
 import {TitleCasePipe} from '@angular/common';
-import {previewCinema} from '@content/cinema';
+import {previewCinema} from '@data/entities';
 import {RouterLink} from '@angular/router';
 
 @Component({

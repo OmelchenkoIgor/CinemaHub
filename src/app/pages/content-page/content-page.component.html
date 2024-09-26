@@ -1,12 +1,11 @@
-@if (currentUrl != 'all') {
-  <div class="search">
-    <app-search [category]="currentUrl"/>
-  </div>
-}
+<div class="search">
+  <app-search [category]="currentUrl"/>
+</div>
 
 @if (currentUrl === 'all') {
   <div class="trending-block">
     <p class="title">Trending</p>
+    <app-carousel/>
   </div>
 }
 

@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .carousel-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+    scrollbar-width: none;
+  }
+
+  .carousel-slide {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+}

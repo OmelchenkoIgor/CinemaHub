@@ -115,9 +115,6 @@
 
 @media screen and (min-width: 768px) {
   .card {
-    border-radius: 8px;
-    overflow: hidden;
-    color: var(--white-colour);
 
     &-preview {
       .bookmark-icon {
@@ -161,5 +158,4 @@
       }
     }
   }
-
 }

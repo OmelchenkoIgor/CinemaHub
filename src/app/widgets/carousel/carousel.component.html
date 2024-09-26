@@ -1,0 +1,7 @@
+<div class="carousel-container">
+  <div class="carousel-slide">
+    @for (content of trending(); track $index) {
+      <app-carousel-card [content]="content"/>
+    }
+  </div>
+</div>

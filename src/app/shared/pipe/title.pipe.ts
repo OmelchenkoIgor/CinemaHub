@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Category} from '@content/cinema';
+import {Category} from '@shared/type';
 
 @Pipe({standalone: true, name: 'title'})
 export class TitlePipe implements PipeTransform {
@@ -7,6 +7,8 @@ export class TitlePipe implements PipeTransform {
     switch (value) {
       case 'all':
         return 'Recommended for you';
+      case "multi":
+        return 'movies or TV series'
       case 'movie':
         return 'Movies';
       case 'tv':

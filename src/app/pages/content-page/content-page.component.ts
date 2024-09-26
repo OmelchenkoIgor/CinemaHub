@@ -1,9 +1,10 @@
-import {PreviewListComponent} from '@widgets/preview-list/preview-list.component';
-import {SearchComponent} from '@widgets/search/search.component';
+import {PreviewListComponent} from '@widgets/preview-list';
 import {NavigationEnd, Router} from '@angular/router';
+import {CarouselComponent} from '@widgets/carousel';
 import {Component, inject} from '@angular/core';
-import {Category} from '@content/cinema';
+import {SearchComponent} from '@widgets/search';
 import {TitlePipe} from '@shared/pipe';
+import {Category} from '@shared/type';
 import {filter} from 'rxjs';
 
 @Component({
@@ -11,7 +12,7 @@ import {filter} from 'rxjs';
   selector: 'app-content-page',
   templateUrl: './content-page.component.html',
   styleUrl: './content-page.component.scss',
-  imports: [PreviewListComponent, TitlePipe, SearchComponent]
+  imports: [PreviewListComponent, TitlePipe, SearchComponent, CarouselComponent]
 })
 export class ContentPageComponent {
   private readonly router: Router = inject(Router);

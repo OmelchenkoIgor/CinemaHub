@@ -2,5 +2,7 @@
   <div class="search-icon">
     <img src="/icons/search.svg" alt="Search Icon"/>
   </div>
-  <input type="text" placeholder="Search for {{type() | title}}" [(ngModel)]="searchQuery" (input)="onSearch()">
+  @if (typeName) {
+    <input type="text" placeholder="Search for {{ typeName | title }}" [(ngModel)]="searchQuery" (input)="onSearch()">
+  }
 </div>

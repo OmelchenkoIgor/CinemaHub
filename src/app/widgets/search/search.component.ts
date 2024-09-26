@@ -1,6 +1,9 @@
-import {Category, GetCinemaCommand, GetSearchCinemaCommand, PreviewCinemaRepository, Type} from '@content/cinema';
 import {Component, effect, inject, input, InputSignal, signal, WritableSignal} from '@angular/core';
+import {GetSearchCinemaCommand} from '@commands/get-search-cinema.command';
+import {GetCinemaCommand} from '@commands/get-cinema.command';
+import {PreviewCinemaRepository} from '@data/repositories';
 import {SearchInputComponent} from '@shared/components';
+import {Category, Type} from '@shared/type';
 
 @Component({
   standalone: true,
@@ -21,17 +24,17 @@ export class SearchComponent {
 
   constructor() {
     effect(() => {
-      const type: Type = this.category() === 'all' ?'trending' : 'discover';
+      const type: Type = this.category() === 'all' ? 'trending' : 'discover';
       const searchValue: string | null = this.searchChange();
 
       if (searchValue === null) return;
-      this.previewCinema.saveSearchQuery(searchValue);
+      this.previewCinema.setSearchQuery(searchValue);
 
       if (searchValue !== '') {
         this.getSearch.execute('search', this.category(), searchValue, 1, 'en');
       } else {
         this.getCinema.execute(type, this.category(), 1, 'en');
-        this.previewCinema.saveNewPage(2);
+        this.previewCinema.setNewPage(2);
       }
     }, {allowSignalWrites: true});
   }

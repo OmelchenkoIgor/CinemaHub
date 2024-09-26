@@ -1,7 +1,9 @@
 import {Component, computed, effect, HostListener, inject, input, InputSignal, OnDestroy, Signal} from '@angular/core';
 import {LoadingSpinnerComponent, PreviewCardComponent} from '@shared/components';
-import {previewCinema, PreviewCinemaRepository} from '@content/cinema/data';
-import {Category, GetCinemaCommand} from '@content/cinema';
+import {GetCinemaCommand} from '@commands/get-cinema.command';
+import {PreviewCinemaRepository} from '@data/repositories';
+import {previewCinema} from '@data/entities';
+import {Category} from '@shared/type';
 
 @Component({
   standalone: true,
@@ -39,7 +41,7 @@ export class PreviewListComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.previewCinema.saveNewPage(2);
+    this.previewCinema.setNewPage(2);
   }
 
   @HostListener('window:scroll', [])
@@ -51,13 +53,13 @@ export class PreviewListComponent implements OnDestroy {
       this.isLoading = true;
       if (this.category() === 'all') {
         this.getCinema.execute('trending', 'all', this.previewCinema.isPage(), 'en');
-        this.previewCinema.saveNewPage(this.previewCinema.isPage() + 1);
+        this.previewCinema.setNewPage(this.previewCinema.isPage() + 1);
       } else if (this.category() === 'movie') {
         this.getCinema.execute('discover', 'movie', this.previewCinema.isPage(), 'en');
-        this.previewCinema.saveNewPage(this.previewCinema.isPage() + 1);
+        this.previewCinema.setNewPage(this.previewCinema.isPage() + 1);
       } else if (this.category() === 'tv') {
         this.getCinema.execute('discover', 'tv', this.previewCinema.isPage(), 'en');
-        this.previewCinema.saveNewPage(this.previewCinema.isPage() + 1);
+        this.previewCinema.setNewPage(this.previewCinema.isPage() + 1);
       }
     }
   }

@@ -2,10 +2,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@data/*": ["app/data/*"],
       "@pages/*": ["app/pages/*"],
       "@shared/*": ["app/shared/*"],
       "@widgets/*": ["app/widgets/*"],
-      "@content/*": ["app/content/*"],
+      "@commands/*": ["app/commands/*"],
       "@environments/*": ["environments/*"]
     },
     "baseUrl": "./src",

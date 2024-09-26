@@ -1,0 +1,27 @@
+<div class="card">
+  <img
+       [src]="isValidPoster(content().poster) ? content().poster : '/images/placeholder.webp'"
+       alt="{{content().title}}"
+       class="poster"
+       loading="lazy"
+  />
+  <div class="overlay"></div>
+  <div class="bookmark-icon">
+    <img src="/icons/bookmark.svg" alt="Bookmark">
+  </div>
+  <div class="play-icon" [routerLink]="['/', content().type + 's', content().id]">
+    <img src="/icons/play.svg" alt="Play">
+    <span>Play</span>
+  </div>
+  <div class="card-details">
+    <div class="card-meta">
+      <span>{{ content().release_date }}</span>
+      <span>•</span>
+      <img src="/icons/{{content().type}}.svg" alt="{{ content().type | titlecase}}">
+      <span>{{ content().type }}</span>
+      <span>•</span>
+      <span>PG</span>
+    </div>
+    <h3 class="card-title">{{ content().title }}</h3>
+  </div>
+</div>
