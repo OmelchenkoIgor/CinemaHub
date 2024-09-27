@@ -4,6 +4,16 @@
   overflow: hidden;
   box-sizing: border-box;
 
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    &:hover .scroll-btn {
+      opacity: 1;
+    }
+  }
+
   .carousel-container {
     width: 100%;
     overflow-x: auto;
@@ -11,11 +21,66 @@
     max-width: 100%;
     box-sizing: border-box;
     scrollbar-width: none;
+    position: relative;
+    z-index: 1;
   }
 
   .carousel-slide {
     display: flex;
     gap: 20px;
     flex-wrap: nowrap;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .scroll-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0)
+    );
+    border: none;
+    color: white;
+    font-size: 55px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+
+    &:hover {
+      background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0)
+      );
+    }
+
+    &.left {
+      left: 0;
+      background: linear-gradient(
+          to left,
+          rgb(1 1 1 / 0%),
+          rgb(0 0 0)
+      );
+    }
+
+    &.right {
+      right: 0;
+      background: linear-gradient(
+          to right,
+          rgb(255 255 255 / 0%),
+          rgb(0 0 0)
+      );
+    }
+  }
+
+  .scroll-btn.hidden {
+    display: none;
   }
 }

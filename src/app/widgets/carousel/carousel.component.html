@@ -1,7 +1,17 @@
-<div class="carousel-container">
-  <div class="carousel-slide">
-    @for (content of trending(); track $index) {
-      <app-carousel-card [content]="content"/>
-    }
+<div class="carousel-wrapper">
+  @if (showScrollButtons && canScrollLeft) {
+    <button class="scroll-btn left" (click)="scrollLeft()" [class.hidden]="!canScrollLeft">‹</button>
+  }
+
+  <div class="carousel-container" #carouselContainer (scroll)="checkScrollPosition()">
+    <div class="carousel-slide">
+      @for (content of trending(); track $index) {
+        <app-carousel-card [content]="content"/>
+      }
+    </div>
   </div>
+
+  @if (showScrollButtons && canScrollRight) {
+    <button class="scroll-btn right" (click)="scrollRight()" [class.hidden]="!canScrollRight">›</button>
+  }
 </div>
