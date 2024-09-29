@@ -1,4 +1,4 @@
-import {Component, computed, inject, Signal, ViewChild, ElementRef, AfterViewInit, HostListener} from '@angular/core';
+import {Component, computed, inject, Signal, ViewChild, ElementRef, AfterViewInit, HostListener, effect} from '@angular/core';
 import {GetTrendingCinemaCommand} from '@commands/get-trending-cinema.command';
 import {TrendingCinemaRepository} from '@data/repositories';
 import {CarouselCardComponent} from '@shared/components';
@@ -25,13 +25,21 @@ export class CarouselComponent implements AfterViewInit {
 
   constructor() {
     this.getTrendingCinema.execute();
+
+    effect(() => {
+      const trendingData: Array<previewCinema> = this.trending();
+
+      if (trendingData && trendingData.length > 0) {
+        setTimeout(() => {
+          this.checkScrollPosition();
+          this.updateShowScrollButtons();
+        }, 0);
+      }
+    });
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.checkScrollPosition();
-      this.updateShowScrollButtons();
-    }, 100);
+    this.updateShowScrollButtons();
   }
 
   public scrollLeft(): void {
