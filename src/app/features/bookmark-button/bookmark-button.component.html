@@ -1,0 +1,5 @@
+<div class="bookmark"
+     [ngClass]="{'active-bookmark': isBookmarked, 'inactive-bookmark': !isBookmarked}"
+     (click)="toggleBookmark()">
+  <img src="/icons/bookmark.svg" alt="Bookmark">
+</div>

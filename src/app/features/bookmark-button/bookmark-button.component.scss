@@ -1,0 +1,57 @@
+.bookmark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+
+  img {
+    width: 12px;
+    height: 14px;
+    transition: filter 0.3s;
+  }
+
+  &.inactive-bookmark {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &.active-bookmark {
+    background-color: var(--white-colour);
+
+    img {
+      filter: invert(1);
+    }
+  }
+
+  &:hover {
+    background-color: var(--white-colour);
+
+    img {
+      filter: invert(1);
+    }
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bookmark {
+    width: 32px;
+    height: 32px;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

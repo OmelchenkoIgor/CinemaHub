@@ -11,81 +11,16 @@
       aspect-ratio: 16/9;
       object-fit: cover;
       border-radius: 8px;
-      transition: opacity 0.3s, filter 0.3s;
+      transition: filter 0.3s;
     }
 
-    .bookmark-icon {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 24px;
-      height: 24px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 4px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-
-      img {
-        width: 12px;
-        height: 14px;
-        transition: filter 0.3s;
-      }
-
-      &:hover {
-        background-color: var(--white-colour);
-
-        img {
-          filter: invert(1);
-        }
-      }
-    }
-
-    .play-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 255, 255, 0.4);
-      border-radius: 20px;
-      padding: 10px;
-      gap: 5px;
+    .play-but {
       opacity: 0;
       transition: opacity 0.3s;
-      cursor: pointer;
-
-      img {
-        width: 16px;
-        height: 16px;
-        margin-right: 8px;
-      }
-
-      span {
-        color: var(--white-colour);
-        font-size: 14px;
-        font-weight: 500;
-      }
-
-      &:hover {
-        background-color: var(--white-colour);
-
-        img {
-          filter: invert(1);
-        }
-
-        span {
-          color: var(--background-colour);
-        }
-      }
     }
   }
 
-  &:hover .play-icon {
+  &:hover .play-but {
     opacity: 1;
   }
 
@@ -115,33 +50,6 @@
 
 @media screen and (min-width: 768px) {
   .card {
-
-    &-preview {
-      .bookmark-icon {
-        width: 32px;
-        height: 32px;
-
-        img {
-          width: 18px;
-          height: 18px;
-        }
-      }
-
-      .play-icon {
-        gap: 10px;
-
-        img {
-          width: 24px;
-          height: 24px;
-          margin-right: 12px;
-        }
-
-        span {
-          font-size: 18px;
-        }
-      }
-    }
-
     &-content {
       .card-meta {
         font-size: 16px;

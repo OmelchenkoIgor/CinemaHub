@@ -6,13 +6,12 @@
        loading="lazy"
   />
   <div class="overlay"></div>
-  <div class="bookmark-icon">
-    <img src="/icons/bookmark.svg" alt="Bookmark">
+  <app-bookmark-button [content]="content()"/>
+
+  <div class="play-but">
+    <app-play-button [content]="content()"/>
   </div>
-  <div class="play-icon" [routerLink]="['/', content().type + 's', content().id]">
-    <img src="/icons/play.svg" alt="Play">
-    <span>Play</span>
-  </div>
+
   <div class="card-details">
     <div class="card-meta">
       <span>{{ content().release_date }}</span>
