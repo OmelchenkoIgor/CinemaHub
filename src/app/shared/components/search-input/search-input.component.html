@@ -3,6 +3,6 @@
     <img src="/icons/search.svg" alt="Search Icon"/>
   </div>
   @if (typeName) {
-    <input type="text" placeholder="Search for {{ typeName | title }}" [(ngModel)]="searchQuery" (input)="onSearch()">
+    <input type="text" placeholder="Search for {{ typeName | title }}" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)">
   }
 </div>
