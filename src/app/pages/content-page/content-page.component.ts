@@ -6,6 +6,7 @@ import {SearchComponent} from '@widgets/search';
 import {TitlePipe} from '@shared/pipe';
 import {Category} from '@shared/type';
 import {filter} from 'rxjs';
+import {PreviewCinemaRepository} from '@data/repositories';
 
 @Component({
   standalone: true,
@@ -16,6 +17,7 @@ import {filter} from 'rxjs';
 })
 export class ContentPageComponent {
   private readonly router: Router = inject(Router);
+  public readonly previewCinema: PreviewCinemaRepository = inject(PreviewCinemaRepository);
 
   public currentUrl: Category = 'all';
 

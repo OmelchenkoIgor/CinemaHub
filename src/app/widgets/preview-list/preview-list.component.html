@@ -1,4 +1,11 @@
 @if (previewList()) {
+
+  @if (previewCinema.isSearchQuery().length === 0) {
+    <p class="title">{{ category() | title }}</p>
+  } @else {
+    <p class="title">Found {{ previewCinema.isPreviewCinemaList().length }} results for '{{ previewCinema.isSearchQuery() }}'</p>
+  }
+
   <div class="list">
     @for (movie of previewList(); track $index) {
       <app-preview-card [content]="movie"/>

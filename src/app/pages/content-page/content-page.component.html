@@ -2,7 +2,7 @@
   <app-search [category]="currentUrl"/>
 </div>
 
-@if (currentUrl === 'all') {
+@if (currentUrl === 'all' && previewCinema.isSearchQuery().length === 0) {
   <div class="trending-block">
     <p class="title">Trending</p>
     <app-carousel/>
@@ -10,6 +10,5 @@
 }
 
 <div class="content">
-  <p class="title">{{ currentUrl | title }}</p>
   <app-preview-list [category]="currentUrl"/>
 </div>

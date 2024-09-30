@@ -16,6 +16,8 @@ export class PreviewCardComponent {
   public content: InputSignal<previewCinema> = input.required();
 
   public isValidPoster(posterUrl: string | null): boolean {
-    return !!(posterUrl && posterUrl !== 'https://image.tmdb.org/t/p/w500null');
+    return !!posterUrl &&
+      posterUrl !== 'https://image.tmdb.org/t/p/w500null' &&
+      posterUrl !== 'https://image.tmdb.org/t/p/w500undefined';
   }
 }

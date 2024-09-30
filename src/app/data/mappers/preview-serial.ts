@@ -7,7 +7,7 @@ export abstract class PreviewSerialMappers {
   static doDomain(dto: previewSerialDTO): previewCinema {
     const previewSerialProps = {
       id: dto.id,
-      type: 'TV serial',
+      type: 'TV Serial',
       title: dto.name,
       poster: environment.IMG_URL + dto.poster_path,
       release: dto.first_air_date.split('-')[0]

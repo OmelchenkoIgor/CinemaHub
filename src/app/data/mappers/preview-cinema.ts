@@ -9,7 +9,7 @@ export abstract class PreviewCinemaMappers {
 
     const previewCinemaProps = {
       id: dto.id,
-      type: dto.media_type === 'tv' ? 'TV serial' : 'Movie',
+      type: dto.media_type === 'tv' ? 'TV Serial' : 'Movie',
       title: dto.name ?? dto.title ?? 'Unknown Title',
       poster: environment.IMG_URL + dto.poster_path,
       release: releaseYear

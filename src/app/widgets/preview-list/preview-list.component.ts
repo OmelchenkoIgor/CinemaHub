@@ -3,6 +3,7 @@ import {LoadingSpinnerComponent, PreviewCardComponent} from '@shared/components'
 import {GetCinemaCommand} from '@commands/get-cinema.command';
 import {PreviewCinemaRepository} from '@data/repositories';
 import {previewCinema} from '@data/entities';
+import {TitlePipe} from '@shared/pipe';
 import {Category} from '@shared/type';
 
 @Component({
@@ -10,14 +11,14 @@ import {Category} from '@shared/type';
   selector: 'app-preview-list',
   templateUrl: './preview-list.component.html',
   styleUrl: './preview-list.component.scss',
-  imports: [PreviewCardComponent, LoadingSpinnerComponent]
+  imports: [PreviewCardComponent, LoadingSpinnerComponent, TitlePipe]
 })
 export class PreviewListComponent implements OnDestroy {
   public readonly category: InputSignal<Category> = input.required();
 
   private readonly getCinema: GetCinemaCommand = inject(GetCinemaCommand);
 
-  private readonly previewCinema: PreviewCinemaRepository = inject(PreviewCinemaRepository);
+  public readonly previewCinema: PreviewCinemaRepository = inject(PreviewCinemaRepository);
 
   protected isLoading: boolean = true;
   protected readonly previewList: Signal<Array<previewCinema>> = computed(() => this.previewCinema.isPreviewCinemaList());
@@ -42,6 +43,7 @@ export class PreviewListComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.previewCinema.setNewPage(2);
+    this.previewCinema.setSearchQuery('');
   }
 
   @HostListener('window:scroll', [])
