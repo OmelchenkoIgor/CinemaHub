@@ -1,0 +1,9 @@
+@if (list() && list().length) {
+  <p class="title">Bookmarked {{ type() }}</p>
+
+  <div class="list">
+    @for (item of list(); track $index) {
+      <app-preview-card [content]="item"/>
+    }
+  </div>
+}

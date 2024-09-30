@@ -6,30 +6,36 @@ import {Injectable} from '@angular/core';
 export class BookmarkCommand {
   private cinemaData: WritableSignal<Array<previewCinema>> = signal(this.loadBookmarks());
 
-  private loadBookmarks(): Array<previewCinema> {
+  public loadBookmarks(): Array<previewCinema> {
     const cinemaData: string | null = localStorage.getItem('CinemaData');
     return cinemaData ? JSON.parse(cinemaData) : [];
   }
 
   public isBookmarked(cinema: previewCinema): boolean {
-    return this.cinemaData().some((item: previewCinema) => this.objectsAreEqual(item, cinema));
+    const unwrappedCinema = (cinema as any).source ? (cinema as any).source : cinema;
+
+    return this.cinemaData().some(
+      (item: previewCinema) =>
+        item.id === unwrappedCinema.id && item.type === unwrappedCinema.type
+    );
   }
 
   public toggleBookmark(cinema: previewCinema): void {
     let cinemaDataArray: Array<previewCinema> = this.cinemaData();
-    const objectIndex: number = cinemaDataArray.findIndex((item: previewCinema) => this.objectsAreEqual(item, cinema));
+
+    const unwrappedCinema = (cinema as any).source ? (cinema as any).source : cinema;
+
+    const objectIndex: number = cinemaDataArray.findIndex(
+      (item: previewCinema) => item.id === unwrappedCinema.id
+    );
 
     if (objectIndex !== -1) {
       cinemaDataArray.splice(objectIndex, 1);
     } else {
-      cinemaDataArray.push(cinema);
+      cinemaDataArray.push(unwrappedCinema);
     }
 
     localStorage.setItem('CinemaData', JSON.stringify(cinemaDataArray));
     this.cinemaData.set([...cinemaDataArray]);
-  }
-
-  private objectsAreEqual(obj1: previewCinema, obj2: previewCinema): boolean {
-    return JSON.stringify(obj1) === JSON.stringify(obj2);
   }
 }
