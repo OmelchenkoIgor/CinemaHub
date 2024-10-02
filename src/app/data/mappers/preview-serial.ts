@@ -1,11 +1,10 @@
+import {previewCinema, previewCinemaProps} from '@data/entities';
 import {environment} from '@environments/environment';
-import {previewCinema} from '@data/entities';
 import {previewSerialDTO} from '@data/dto';
-
 
 export abstract class PreviewSerialMappers {
   static doDomain(dto: previewSerialDTO): previewCinema {
-    const previewSerialProps = {
+    const previewSerialProps: previewCinemaProps = {
       id: dto.id,
       type: 'TV Serial',
       title: dto.name,

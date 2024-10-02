@@ -1,12 +1,12 @@
 import {PreviewListComponent} from '@widgets/preview-list';
+import {PreviewCinemaRepository} from '@data/repositories';
 import {NavigationEnd, Router} from '@angular/router';
 import {CarouselComponent} from '@widgets/carousel';
+import {SearchComponent} from '@features/search';
 import {Component, inject} from '@angular/core';
-import {SearchComponent} from '@widgets/search';
 import {TitlePipe} from '@shared/pipe';
 import {Category} from '@shared/type';
 import {filter} from 'rxjs';
-import {PreviewCinemaRepository} from '@data/repositories';
 
 @Component({
   standalone: true,

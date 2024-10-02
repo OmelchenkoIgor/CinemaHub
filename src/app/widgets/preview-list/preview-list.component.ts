@@ -1,7 +1,8 @@
 import {Component, computed, effect, HostListener, inject, input, InputSignal, OnDestroy, Signal} from '@angular/core';
-import {LoadingSpinnerComponent, PreviewCardComponent} from '@shared/components';
 import {GetCinemaCommand} from '@commands/get-cinema.command';
+import {PreviewCardComponent} from '@features/preview-card';
 import {PreviewCinemaRepository} from '@data/repositories';
+import {LoadingSpinnerComponent} from '@shared/components';
 import {previewCinema} from '@data/entities';
 import {TitlePipe} from '@shared/pipe';
 import {Category} from '@shared/type';

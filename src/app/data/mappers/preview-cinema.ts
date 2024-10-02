@@ -1,13 +1,13 @@
 import {environment} from '@environments/environment';
-import {previewCinema} from '@data/entities';
+import {previewCinema, previewCinemaProps} from '@data/entities';
 import {previewCinemaDTO} from '@data/dto';
 
 export abstract class PreviewCinemaMappers {
   static doDomain(dto: previewCinemaDTO): previewCinema {
-    const releaseDate = dto.first_air_date || dto.release_date;
-    const releaseYear = releaseDate ? releaseDate.split('-')[0] : 'Unknown';
+    const releaseDate: string | undefined = dto.first_air_date || dto.release_date;
+    const releaseYear: string = releaseDate ? releaseDate.split('-')[0] : 'Unknown';
 
-    const previewCinemaProps = {
+    const previewCinemaProps: previewCinemaProps = {
       id: dto.id,
       type: dto.media_type === 'tv' ? 'TV Serial' : 'Movie',
       title: dto.name ?? dto.title ?? 'Unknown Title',

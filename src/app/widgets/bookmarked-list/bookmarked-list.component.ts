@@ -1,6 +1,6 @@
-import {Component, effect, inject, input, InputSignal, OnDestroy, signal, WritableSignal} from '@angular/core';
+import {Component, effect, inject, input, InputSignal, signal, WritableSignal} from '@angular/core';
+import {PreviewCardComponent} from '@features/preview-card';
 import {BookmarkCommand} from '@commands/bookmark.command';
-import {PreviewCardComponent} from '@shared/components';
 import {previewCinema} from '@data/entities';
 import {CinemaType} from '@shared/type';
 
@@ -11,7 +11,7 @@ import {CinemaType} from '@shared/type';
   styleUrl: './bookmarked-list.component.scss',
   imports: [PreviewCardComponent]
 })
-export class BookmarkedListComponent{
+export class BookmarkedListComponent {
   public type: InputSignal<CinemaType> = input.required();
   public list: WritableSignal<Array<previewCinema>> = signal([]);
 

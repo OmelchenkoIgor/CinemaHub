@@ -2,9 +2,9 @@ import {previewCinemaDTO, responseCinemaDTO} from '@data/dto';
 import {TrendingCinemaRepository} from '@data/repositories';
 import {PreviewCinemaMappers} from '@data/mappers';
 import {inject, Injectable} from '@angular/core';
+import {previewCinema} from '@data/entities';
 import {ApiService} from '@data/services';
 import {tap} from 'rxjs/operators';
-import {previewCinema} from '@data/entities';
 
 @Injectable({providedIn: 'root'})
 export class GetTrendingCinemaCommand {
