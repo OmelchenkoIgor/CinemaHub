@@ -12,6 +12,7 @@
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s ease-in-out;
+  z-index: 5;
 
   img {
     width: 12px;
