@@ -1,0 +1,44 @@
+@if (videoUrl) {
+  <div class="video-container">
+    <iframe
+      [src]="videoUrl"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+}
+
+@if (detail) {
+  <p class="title">{{detail.name}}</p>
+  <div class="cinema-info">
+    <div class="item">
+      <div class="cinema-meta">
+        <p>{{detail.release}}</p>
+        <span>•</span>
+        <p>{{detail.runtime}}</p>
+        <span>•</span>
+        <div class="label-hd">
+          {{detail.quality}}
+        </div>
+      </div>
+      <div class="cinema-description">
+        <p>{{detail.description}}</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="cinema-genres">
+        <p><span>Genres:</span> {{ detail.genres.join(', ') }} </p>
+      </div>
+
+      <div class="cinema-cast">
+        <p><span>The cast:</span> {{ detail.cast.join(', ') }} </p>
+      </div>
+
+      <div class="cinema-about">
+        <p><span>About the film:</span> {{ detail.about.join(', ') }} </p>
+      </div>
+    </div>
+  </div>
+}
+

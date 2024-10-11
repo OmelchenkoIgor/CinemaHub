@@ -1,4 +1,4 @@
-<div class="play" [routerLink]="['/', content().type + 's', content().id]">
+<div class="play" [routerLink]="['/', transformType(content().type), content().id]">
   <img src="/icons/play.svg" alt="Play">
   <span>Play</span>
 </div>

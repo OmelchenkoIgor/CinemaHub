@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
 import {BookmarkedListComponent} from '@widgets/bookmarked-list';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-bookmarked-page',
   standalone: true,
-  imports: [
-    BookmarkedListComponent
-  ],
+  selector: 'app-bookmarked-page',
   templateUrl: './bookmarked-page.component.html',
-  styleUrl: './bookmarked-page.component.scss'
+  styleUrl: './bookmarked-page.component.scss',
+  imports: [BookmarkedListComponent]
 })
 export class BookmarkedPageComponent {
 

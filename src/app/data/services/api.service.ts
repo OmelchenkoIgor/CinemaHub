@@ -1,4 +1,4 @@
-import {responseCinemaDTO, responseMovieDTO, responseSerialDTO} from '@data/dto';
+import {MovieDTO, responseCinemaDTO, responseMovieDTO, responseSerialDTO, SerialDTO} from '@data/dto';
 import {Category, Language, Range, Type} from '@shared/type';
 import {environment} from '@environments/environment';
 import {inject, Injectable} from '@angular/core';
@@ -46,4 +46,26 @@ export class ApiService {
 
     return this.http.get<responseCinemaDTO | responseMovieDTO | responseSerialDTO>(`${environment.BASE_URL}/${type}/${category}`, {params});
   }
+
+  public getDetail(type: Category, id: string, language: Language): Observable<MovieDTO | SerialDTO> {
+    let params: { api_key: string; language: string } = {
+      api_key: environment.API_KEY,
+      language: `${language}-US`
+    };
+
+    return this.http.get<any>(`${environment.BASE_URL}/${type}/${id}`, {params});
+  }
+
+  public getMovieVideos(type: Category, movieId: string): Observable<any> {
+    return this.http.get(`${environment.BASE_URL}/${type}/${movieId}/videos?api_key=${environment.API_KEY}`);
+  }
+
+  public getMovieCast(type: string, movieId: string): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/${type}/${movieId}/credits?api_key=${environment.API_KEY}`);
+  }
+
+  public getAboutData(type: string, id: string): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${environment.API_KEY}`);
+  }
+
 }

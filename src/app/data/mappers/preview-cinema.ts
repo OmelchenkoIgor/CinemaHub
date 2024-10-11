@@ -1,5 +1,5 @@
-import {environment} from '@environments/environment';
 import {previewCinema, previewCinemaProps} from '@data/entities';
+import {environment} from '@environments/environment';
 import {previewCinemaDTO} from '@data/dto';
 
 export abstract class PreviewCinemaMappers {
