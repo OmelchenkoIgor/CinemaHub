@@ -26,6 +26,7 @@
 
   &:hover .preview {
     filter: brightness(0.5);
+    pointer-events: none;
   }
 
   &-content {
