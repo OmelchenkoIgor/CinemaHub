@@ -3,7 +3,7 @@ import {Cinema} from '@data/entities/cinema';
 import {SerialDTO} from '@data/dto';
 
 export abstract class DetailSerialMappers {
-  static doDomain(dto: SerialDTO, videoKey: string, cast: any, about: any): Cinema {
+  static doDomain(dto: SerialDTO, videoKey: string, cast: Array<string>, about: Array<string>): Cinema {
 
     const detailCinema  = {
       name: dto.name,

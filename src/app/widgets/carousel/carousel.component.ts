@@ -1,7 +1,7 @@
 import {Component, computed, inject, Signal, ViewChild, ElementRef, AfterViewInit, HostListener, effect} from '@angular/core';
-import {GetTrendingCinemaCommand} from '@commands/get-trending-cinema.command';
 import {CarouselCardComponent} from '@features/carousel-card';
 import {TrendingCinemaRepository} from '@data/repositories';
+import {GetTrendingCinemaCommand} from '@commands';
 import {previewCinema} from '@data/entities';
 import {NgClass} from '@angular/common';
 

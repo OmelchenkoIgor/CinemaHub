@@ -1,7 +1,7 @@
 import {Component, effect, inject, input, InputSignal, signal, WritableSignal} from '@angular/core';
 import {PreviewCardComponent} from '@features/preview-card';
-import {BookmarkCommand} from '@commands/bookmark.command';
 import {previewCinema} from '@data/entities';
+import {BookmarkCommand} from '@commands';
 import {CinemaType} from '@shared/type';
 
 @Component({

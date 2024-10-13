@@ -1,10 +1,10 @@
-import {DetailCinemaRepository} from '@data/repositories';
 import {DetailMovieMappers, DetailSerialMappers} from '@data/mappers';
+import {DetailCinemaRepository} from '@data/repositories';
 import {inject, Injectable} from '@angular/core';
-import {MovieDTO, SerialDTO} from '@data/dto';
-import {Cinema} from '@data/entities/cinema';
+import {castDTO, MovieDTO, SerialDTO} from '@data/dto';
 import {ApiService} from '@data/services';
 import {Category} from '@shared/type';
+import {Cinema} from '@data/entities';
 import {tap} from 'rxjs/operators';
 import {forkJoin} from 'rxjs';
 
@@ -26,11 +26,12 @@ export class GetDetailInfoCinemaCommand {
         }).pipe(
           tap(({videoResponse, castResponse, aboutResponse}) => {
             const videoKey = videoResponse.results.length > 0 ? videoResponse.results[0].key : null;
-            const cast = castResponse.cast.slice(0, 10).map((actor: any) => actor.name);
+            const cast = castResponse.cast.slice(0, 10).map((actor: castDTO) => actor.name);
+
             const about = aboutResponse?.keywords?.length > 0
-              ? aboutResponse.keywords.slice(0, 10).map((keyword: any) => keyword.name)
+              ? aboutResponse.keywords.slice(0, 10).map((keyword: {id: number, name: string}) => keyword.name)
               : (aboutResponse?.results?.length > 0
-                ? aboutResponse.results.slice(0, 10).map((keyword: any) => keyword.name)
+                ? aboutResponse.results.slice(0, 10).map((keyword: {id: number, name: string}) => keyword.name)
                 : []);
 
             if (type === 'movie') {

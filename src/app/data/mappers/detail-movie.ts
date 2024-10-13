@@ -1,9 +1,9 @@
 import {environment} from '@environments/environment';
-import {Cinema} from '@data/entities/cinema';
+import {Cinema} from '@data/entities';
 import {MovieDTO} from '@data/dto';
 
 export abstract class DetailMovieMappers {
-  static doDomain(dto: MovieDTO, videoKey: string, cast: any, about: any): Cinema {
+  static doDomain(dto: MovieDTO, videoKey: string, cast: Array<string>, about: Array<string>): Cinema {
 
     const detailCinema  = {
       name: dto.title,

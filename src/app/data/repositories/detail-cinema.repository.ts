@@ -5,7 +5,7 @@ import {Cinema} from '@data/entities/cinema';
 export class DetailCinemaRepository {
   private detailCinema: WritableSignal<Cinema | null> = signal(null);
 
-  public setDetailCinema(cinema: Cinema): void {
+  public setDetailCinema(cinema: Cinema | null): void {
     this.detailCinema.set(cinema);
   }
 

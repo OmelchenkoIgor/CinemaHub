@@ -1,6 +1,6 @@
 import {Component, inject, input, InputSignal} from '@angular/core';
-import {BookmarkCommand} from '@commands/bookmark.command';
 import {previewCinema} from '@data/entities';
+import {BookmarkCommand} from '@commands';
 import {NgClass} from '@angular/common';
 
 @Component({

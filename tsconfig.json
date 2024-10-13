@@ -6,9 +6,9 @@
       "@pages/*": ["app/pages/*"],
       "@shared/*": ["app/shared/*"],
       "@widgets/*": ["app/widgets/*"],
-      "@commands/*": ["app/commands/*"],
       "@features/*": ["app/features/*"],
-      "@environments/*": ["environments/*"]
+      "@environments/*": ["environments/*"],
+      "@commands": ["app/commands/index.ts"]
     },
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",

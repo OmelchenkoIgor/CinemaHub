@@ -6,8 +6,8 @@ export type cinemaProps = {
   runtime: string;
   video: string | null;
   quality: string;
-  cast: any;
-  about: any;
+  cast: Array<string>;
+  about: Array<string>;
 }
 
 export class Cinema {
@@ -18,8 +18,8 @@ export class Cinema {
   get runtime(): string { return this.source.runtime; }
   get video(): string | null { return this.source.video; }
   get quality(): string { return this.source.quality; }
-  get cast(): any { return this.source.cast; }
-  get about(): any { return this.source.about; }
+  get cast(): Array<string> { return this.source.cast; }
+  get about(): Array<string> { return this.source.about; }
 
   constructor(private readonly source: cinemaProps) {}
 }

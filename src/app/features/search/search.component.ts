@@ -1,6 +1,5 @@
 import {Component, effect, inject, input, InputSignal, signal, WritableSignal} from '@angular/core';
-import {GetSearchCinemaCommand} from '@commands/get-search-cinema.command';
-import {GetCinemaCommand} from '@commands/get-cinema.command';
+import {GetCinemaCommand, GetSearchCinemaCommand} from '@commands';
 import {PreviewCinemaRepository} from '@data/repositories';
 import {SearchInputComponent} from '@shared/components';
 import {Category, Type} from '@shared/type';

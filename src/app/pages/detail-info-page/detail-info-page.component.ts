@@ -1,10 +1,10 @@
-import { GetDetailInfoCinemaCommand } from '@commands/get-detail-info-cinema.command';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, ParamMap, UrlSegment } from '@angular/router';
-import {Component, effect, inject, OnInit} from '@angular/core';
-import { DetailCinemaRepository } from '@data/repositories';
-import { Category } from '@shared/type';
-import {Cinema} from '@data/entities/cinema';
+import {Component, effect, inject, OnDestroy, OnInit} from '@angular/core';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {ActivatedRoute, ParamMap, UrlSegment} from '@angular/router';
+import {DetailCinemaRepository} from '@data/repositories';
+import {GetDetailInfoCinemaCommand} from '@commands';
+import {Category} from '@shared/type';
+import {Cinema} from '@data/entities';
 
 @Component({
   standalone: true,
@@ -13,7 +13,7 @@ import {Cinema} from '@data/entities/cinema';
   styleUrl: './detail-info-page.component.scss',
   imports: []
 })
-export class DetailInfoPageComponent implements OnInit {
+export class DetailInfoPageComponent implements OnInit, OnDestroy {
   private route: ActivatedRoute = inject(ActivatedRoute);
   private readonly getDetailInfo: GetDetailInfoCinemaCommand = inject(GetDetailInfoCinemaCommand);
   public readonly detailCinemaRepository: DetailCinemaRepository = inject(DetailCinemaRepository);
@@ -57,6 +57,10 @@ export class DetailInfoPageComponent implements OnInit {
     if (this.contentType && this.contentId) {
       this.getDetailInfo.execute(this.contentType, this.contentId);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.detailCinemaRepository.setDetailCinema(null);
   }
 
   private extractVideoId(url: string): string | null {

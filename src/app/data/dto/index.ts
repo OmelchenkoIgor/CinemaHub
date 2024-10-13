@@ -11,3 +11,5 @@ export * from './response-movie';
 export * from './serial';
 export * from './preview-serial';
 export * from './response-serial';
+
+export * from './cast';
